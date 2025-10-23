@@ -4,6 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Call for Volunteers: A Cross-cultural Idea</title>
+    <!-- Waline Comment System CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+    <style>
+        /* 基本样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f8f9fa;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            font-size: 1.1em;
+        }
+        
+        strong {
+            color: #e74c3c;
+        }
+        
+        /* 评论区域样式 */
+        .comments-section {
+            margin-top: 60px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e8ed;
+        }
+        
+        .comments-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .comments-section {
+                padding: 20px;
+                margin-top: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Public Call for Volunteers: A Cross-cultural Idea</h1>
@@ -15,5 +80,35 @@
     <p>If you are from Britain or America: Please reply with one sentence on how you understand this phrase.</p>
     <p>If you are from China: 请用中文告诉我们你对这句话的理解。如果能用成语来隐喻，则更为完美。</p>
     <p>We are looking for true understanding, not just words.</p>
+
+    <!-- 评论区域 -->
+    <div class="comments-section">
+        <h2 class="comments-title">💬 Share Your Understanding</h2>
+        <div id="waline"></div>
+    </div>
+
+    <!-- Waline Comment System -->
+    <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.mjs';
+        
+        init({
+            el: '#waline',
+            serverURL: 'https://my-theta-tan.vercel.app',
+            path: window.location.pathname,
+            comment: true,
+            pageview: true,
+            placeholder: 'Please share your understanding of "Connect the dots, and see the river flow." in your native language...',
+            emoji: [
+                'https://unpkg.com/@waline/emojis@1.1.0/weibo',
+                'https://unpkg.com/@waline/emojis@1.1.0/qq',
+                'https://unpkg.com/@waline/emojis@1.1.0/bilibili',
+            ],
+            meta: ['nick', 'mail', 'link'],
+            requiredMeta: ['nick'],
+            lang: 'en',
+            wordLimit: 200,
+            login: 'enable'
+        });
+    </script>
 </body>
 </html>
