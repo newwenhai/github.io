@@ -79,28 +79,17 @@
     <p>If you are from China: 请用中文告诉我们你对这句话的理解。如果能用成语来隐喻，则更为完美。</p>
     <p>We are looking for true understanding, not just words.</p>
 
-    <!-- 评论区域 -->
+    <!-- 评论区域 - Utterances 评论系统 -->
     <div class="comments-section">
         <h2 class="comments-title">💬 Share Your Understanding</h2>
-        <!-- Giscus 评论框将在这里显示 -->
-        <div class="giscus"></div>
+        <script src="https://utteranc.es/client.js"
+            repo="newwenhai/github.io"
+            issue-term="pathname"
+            label="comment"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+        </script>
     </div>
-
-    <!-- Giscus 评论系统 -->
-    <script src="https://giscus.app/client.js"
-        data-repo="newwenhai/github.io"
-        data-repo-id="R_kgDOL1A0aw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOL1A0a84CehRh"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-    </script>
 </body>
 </html>
