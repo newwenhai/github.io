@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +16,26 @@
             background-color: #f8f9fa;
         }
         
-        h1 {
+        .main-title {
             color: #2c3e50;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 2.2em;
             border-bottom: 3px solid #3498db;
             padding-bottom: 15px;
         }
         
         .title-line1 {
             display: block;
-            font-size: 1em;
-            margin-bottom: 8px;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
         
         .title-line2 {
             display: block;
-            font-size: 0.8em;
+            font-size: 1.4em;
             font-weight: normal;
-            color: #7f8c8d;
+            color: #5d6d7e;
             margin-top: 5px;
         }
         
@@ -83,8 +82,12 @@
                 padding: 20px 15px;
             }
             
-            h1 {
-                font-size: 1.8em;
+            .title-line1 {
+                font-size: 1.5em;
+            }
+            
+            .title-line2 {
+                font-size: 1.2em;
             }
             
             .comments-section {
@@ -95,10 +98,10 @@
     </style>
 </head>
 <body>
-    <h1>
+    <div class="main-title">
         <span class="title-line1">Public Call for Volunteers:</span>
         <span class="title-line2">A Cross-cultural Idea</span>
-    </h1>
+    </div>
     
     <p>Share Your Intuition on a Phrase - And See What Returns</p>
     <p>We are developing a new concept and need your raw, first impression.</p>
@@ -113,33 +116,36 @@
     <div class="comments-section">
         <h2 class="comments-title">💬 Share Your Understanding</h2>
         
+        <!-- 替代联系方式 - 简洁英文版 -->
+        <div style="background: #e8f4fd; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #3498db;">
+            <h4 style="margin-top: 0; color: #2c3e50;">📧 No GitHub Account?</h4>
+            <p>Email your thoughts to: <strong style="color: #e74c3c;">manage@lrmanage.top</strong></p>
+            <p><em>We'll respond within 24 hours and feature selected insights here!</em></p>
+        </div>
+        
         <!-- 加载状态提示 -->
         <div id="comment-loading" class="loading-message">
-            🔄 评论系统加载中... 如果长时间未显示，请<a href="javascript:location.reload()" style="color: #3498db;">刷新页面</a>
+            🔄 Loading comments... <a href="javascript:location.reload()" style="color: #3498db;">Refresh page</a> if this persists.
         </div>
         
         <!-- Utterances 评论框容器 -->
         <div id="utterances-container"></div>
         
-        <!-- 修复的 Utterances 脚本 -->
+        <!-- Utterances 脚本 -->
         <script>
-            // 等待页面完全加载
             window.addEventListener('load', function() {
-                // 创建 Utterances 脚本
                 var script = document.createElement('script');
                 script.src = 'https://utteranc.es/client.js';
-                script.setAttribute('repo', 'newwenhai/newwenhai.github.io');
+                script.setAttribute('repo', 'newwenhai/github.io');
                 script.setAttribute('issue-term', 'pathname');
                 script.setAttribute('theme', 'github-light');
                 script.crossOrigin = 'anonymous';
                 script.async = true;
                 
-                // 脚本加载成功后隐藏加载提示
                 script.onload = function() {
                     document.getElementById('comment-loading').style.display = 'none';
                 };
                 
-                // 添加到容器中
                 document.getElementById('utterances-container').appendChild(script);
             });
         </script>
