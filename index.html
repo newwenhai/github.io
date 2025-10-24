@@ -20,9 +20,23 @@
             color: #2c3e50;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 2.5em;
+            font-size: 2.2em;
             border-bottom: 3px solid #3498db;
             padding-bottom: 15px;
+        }
+        
+        .title-line1 {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+        
+        .title-line2 {
+            display: block;
+            font-size: 0.8em;
+            font-weight: normal;
+            color: #7f8c8d;
+            margin-top: 5px;
         }
         
         p {
@@ -50,6 +64,17 @@
             margin-bottom: 30px;
             font-size: 1.8em;
         }
+
+        /* 加载提示样式 */
+        .loading-message {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-style: italic;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
@@ -58,7 +83,7 @@
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
             
             .comments-section {
@@ -69,7 +94,11 @@
     </style>
 </head>
 <body>
-    <h1>Public Call for Volunteers: A Cross-cultural Idea</h1>
+    <h1>
+        <span class="title-line1">Public Call for Volunteers:</span>
+        <span class="title-line2">A Cross-cultural Idea</span>
+    </h1>
+    
     <p>Share Your Intuition on a Phrase - And See What Returns</p>
     <p>We are developing a new concept and need your raw, first impression.</p>
     <p>Core phrase: "Connect the dots, and see the river flow."</p>
@@ -82,12 +111,36 @@
     <!-- 评论区域 - Utterances 评论系统 -->
     <div class="comments-section">
         <h2 class="comments-title">💬 Share Your Understanding</h2>
-        <script src="https://utteranc.es/client.js"
-            repo="newwenhai/github.io"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
+        
+        <!-- 加载状态提示 -->
+        <div id="comment-loading" class="loading-message">
+            🔄 评论系统加载中... 如果长时间未显示，请<a href="javascript:location.reload()" style="color: #3498db;">刷新页面</a>
+        </div>
+        
+        <!-- Utterances 评论框容器 -->
+        <div id="utterances-container"></div>
+        
+        <!-- 修复的 Utterances 脚本 -->
+        <script>
+            // 等待页面完全加载
+            window.addEventListener('load', function() {
+                // 创建 Utterances 脚本
+                var script = document.createElement('script');
+                script.src = 'https://utteranc.es/client.js';
+                script.setAttribute('repo', 'newwenhai/github.io');
+                script.setAttribute('issue-term', 'pathname');
+                script.setAttribute('theme', 'github-light');
+                script.crossOrigin = 'anonymous';
+                script.async = true;
+                
+                // 脚本加载成功后隐藏加载提示
+                script.onload = function() {
+                    document.getElementById('comment-loading').style.display = 'none';
+                };
+                
+                // 添加到容器中
+                document.getElementById('utterances-container').appendChild(script);
+            });
         </script>
     </div>
 </body>
